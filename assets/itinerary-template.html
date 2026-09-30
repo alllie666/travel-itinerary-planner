@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>云南7天慢旅行</title>
+<style>
+  @page { size: 200mm 297mm; margin: 6mm; }
+  :root{
+    --paper:#f6f1e7; --card:#fffdf9; --ink:#27322c; --muted:#7a8279; --line:#e8e0d0;
+    --tea:#2f6b4f; --tea-2:#e5efe7; --tea-3:#cfe2d4;
+    --clay:#b5643c; --clay-2:#f7e6dc;
+    --gold:#b8862b; --gold-2:#fbf1dc;
+    --sky:#3d6f95; --sky-2:#e3edf5;
+    --plum:#7a5a8c; --plum-2:#efe7f3;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--paper)}
+  body{width:760px;margin:0 auto;padding:0 0 36px;font-family:"Microsoft YaHei","PingFang SC","Noto Sans SC",sans-serif;color:var(--ink);font-size:15px;line-height:1.65}
+  .kai{font-family:"KaiTi","STKaiti","Kaiti SC",serif}
+  .wrap{padding:0 22px}
+
+  /* ---------- 封面 ---------- */
+  .cover{position:relative;height:430px;overflow:hidden;background:linear-gradient(180deg,#f4d9a8 0%,#f1c79a 30%,#b9d3bf 62%,#2f6b4f 100%);color:#fff}
+  .cover svg{position:absolute;left:0;bottom:0;width:100%;height:100%}
+  .cover .txt{position:absolute;left:34px;top:40px;right:34px}
+  .cover .eyebrow{display:inline-block;font-size:13px;letter-spacing:3px;color:#7a4a22;background:rgba(255,255,255,.55);padding:2px 12px;border-radius:20px}
+  .cover h1{margin:14px 0 4px;font-size:46px;line-height:1.15;color:#3b2a18;letter-spacing:2px}
+  .cover .sub{color:#5b4330;font-size:16px}
+  .cover .facts{position:absolute;left:34px;right:34px;bottom:26px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  .cover .facts div{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);border-radius:14px;padding:8px 10px;font-size:12.5px;line-height:1.4;backdrop-filter:blur(2px)}
+  .cover .facts b{display:block;font-size:17px}
+
+  /* ---------- 路线条 ---------- */
+  .route{margin:-1px 0 0;background:var(--tea);color:#fff;padding:18px 22px 22px}
+  .route .line{display:flex;align-items:flex-start;position:relative}
+  .route .line:before{content:"";position:absolute;left:40px;right:40px;top:17px;border-top:2px dashed rgba(255,255,255,.55)}
+  .route .st{flex:1;text-align:center;position:relative}
+  .route .dot{width:36px;height:36px;border-radius:50%;background:#fff;color:var(--tea);display:flex;align-items:center;justify-content:center;margin:0 auto 6px;font-weight:800;font-size:15px;box-shadow:0 0 0 5px rgba(255,255,255,.18)}
+  .route .st b{display:block;font-size:16px}
+  .route .st small{display:block;font-size:12px;opacity:.85;line-height:1.35}
+  .route .mode{position:absolute;top:-2px;left:100%;transform:translateX(-50%);background:var(--gold);color:#fff;font-size:11px;border-radius:10px;padding:0 7px;white-space:nowrap;z-index:2}
+
+  /* ---------- 通用 ---------- */
+  .sec{display:flex;align-items:baseline;gap:10px;margin:34px 0 12px}
+  .sec .no{font-size:34px;font-weight:800;color:var(--tea-3);line-height:1}
+  .sec h2{margin:0;font-size:24px;letter-spacing:1px}
+  .sec .hint{color:var(--muted);font-size:13px;margin-left:auto}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px 20px;margin:14px 0;box-shadow:0 2px 0 rgba(60,50,30,.04);break-inside:avoid}
+  .legend{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:12.5px;color:var(--muted);margin-top:12px}
+  .ic{display:inline-flex;align-items:center;gap:3px;font-size:12px;font-weight:700;border-radius:7px;padding:1px 7px;white-space:nowrap}
+  .i-bus{background:var(--sky-2);color:var(--sky)} .i-car{background:var(--plum-2);color:var(--plum)}
+  .i-train{background:var(--clay-2);color:var(--clay)} .i-walk{background:var(--tea-2);color:var(--tea)}
+  .i-sun{background:var(--gold-2);color:var(--gold)} .i-eat{background:#f6e8df;color:#98542c} .i-tea{background:#dff0d8;color:#3d6b2a}
+  .alt-demo{background:#f3ecdf;border-left:3px solid var(--gold);padding:0 8px;border-radius:6px;color:#6b5a40}
+
+  /* ---------- 问答卡 ---------- */
+  .qa{background:linear-gradient(135deg,#fffaf0,#fbf1dc);border:1px solid #ecd9ac}
+  .qa h3{margin:0 0 8px;font-size:18px}
+  .pill{display:inline-block;border-radius:8px;color:#fff;font-size:13px;font-weight:700;padding:1px 9px;margin-right:6px}
+  .p-no{background:var(--clay)} .p-yes{background:var(--tea)}
+  .qa p{margin:6px 0}
+
+  /* ---------- 每日 ---------- */
+  .day{background:var(--card);border:1px solid var(--line);border-radius:22px;margin:18px 0;overflow:hidden;break-inside:avoid-page}
+  .dhead{display:flex;align-items:center;gap:16px;padding:16px 20px;color:#fff;position:relative}
+  .dhead .d{font-size:34px;font-weight:800;line-height:1;letter-spacing:-1px}
+  .dhead .w{font-size:12px;opacity:.85;margin-top:3px}
+  .dhead .t{font-size:19px;font-weight:700;line-height:1.3}
+  .dhead .t small{display:block;font-size:13px;font-weight:400;opacity:.9;margin-top:2px}
+  .dhead .place{position:absolute;right:18px;top:14px;font-size:12px;border:1px solid rgba(255,255,255,.55);border-radius:12px;padding:0 9px;opacity:.95}
+  .bn{background:linear-gradient(120deg,#2f6b4f,#4c8b67)} .jm{background:linear-gradient(120deg,#5d7a33,#8aa24c)}
+  .pe{background:linear-gradient(120deg,#8a5a2b,#b8864f)} .km{background:linear-gradient(120deg,#2f5b82,#4d7fa8)}
+  .tl{position:relative;padding:14px 20px 8px 20px}
+  .item{display:grid;grid-template-columns:64px 18px 1fr;gap:0 10px;padding:0 0 14px;position:relative}
+  .item .tm{font-weight:800;color:var(--tea);font-size:13.5px;text-align:right;padding-top:1px;line-height:1.35}
+  .item .rail{position:relative}
+  .item .rail:before{content:"";position:absolute;left:8px;top:6px;bottom:-14px;border-left:2px solid var(--tea-3)}
+  .item:last-child .rail:before{display:none}
+  .item .rail:after{content:"";position:absolute;left:3px;top:5px;width:12px;height:12px;border-radius:50%;background:#fff;border:3px solid var(--tea)}
+  .item.hl .rail:after{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 4px var(--gold-2)}
+  .item .ti{font-weight:700;font-size:15.5px}
+  .item .ds{font-size:14px;color:#46504a;margin-top:2px}
+  .alt{margin-top:6px;font-size:13px;color:#6b5a40;background:#f5eee1;border-left:3px solid var(--gold);border-radius:8px;padding:4px 10px}
+  .alt b.a{color:var(--gold);margin-right:4px}
+  .new{font-size:11px;color:var(--clay);border:1px solid var(--clay);border-radius:6px;padding:0 5px;margin-left:4px;font-weight:700;vertical-align:1px}
+  .foot-tip{display:flex;gap:10px;padding:10px 20px 14px;background:#faf6ee;border-top:1px dashed var(--line);font-size:13px;color:#5f675f}
+  .foot-tip span{flex:1}
+
+  /* ---------- 交通路线 ---------- */
+  .jr{position:relative;padding-left:26px}
+  .jr:before{content:"";position:absolute;left:9px;top:8px;bottom:8px;border-left:3px solid var(--tea-3)}
+  .leg{position:relative;padding:8px 0 10px}
+  .leg:before{content:"";position:absolute;left:-23px;top:14px;width:14px;height:14px;border-radius:50%;background:var(--tea);box-shadow:0 0 0 4px var(--tea-2)}
+  .leg .top{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .leg .date{font-size:12px;font-weight:800;color:#fff;background:var(--tea);border-radius:6px;padding:0 6px}
+  .leg .ft{font-weight:700;font-size:15px}
+  .leg .meta{font-size:13px;color:#5b645d;margin-top:2px}
+  .leg .meta b{color:var(--ink)}
+
+  /* ---------- 住宿 ---------- */
+  .hgroup h3{margin:0 0 4px;font-size:18px}
+  .hgroup .gsub{font-size:13px;color:var(--muted);margin-bottom:10px}
+  .hotels{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .h{border:1px solid var(--line);border-radius:16px;padding:12px 14px;background:#fff;position:relative}
+  .h.top{border:2px solid var(--tea);background:#f6fbf7}
+  .h .badge{position:absolute;right:10px;top:-10px;background:var(--tea);color:#fff;font-size:11.5px;border-radius:10px;padding:1px 8px;font-weight:700}
+  .h .badge.g{background:var(--gold)}
+  .h .n{font-weight:800;font-size:15px;line-height:1.3;padding-right:4px}
+  .h .where{font-size:12px;color:var(--muted)}
+  .h .row{display:flex;align-items:flex-end;justify-content:space-between;margin-top:6px}
+  .h .price{font-size:24px;font-weight:800;color:var(--clay);line-height:1}
+  .h .price small{font-size:12px;color:var(--muted);font-weight:400}
+  .h .score{font-size:12px;background:var(--tea-2);color:var(--tea);border-radius:8px;padding:1px 7px;font-weight:700}
+  .h .why{font-size:12.5px;color:#4f5850;margin-top:6px;line-height:1.5}
+  .h .why i{font-style:normal;color:var(--clay)}
+  .fill{margin-top:6px;font-size:12px;color:var(--muted)}
+  .fill span{display:inline-block;border-bottom:1px solid #cfc6b4;width:52px;margin:0 4px}
+
+  /* ---------- 其他 ---------- */
+  .todo{list-style:none;margin:0;padding:0}
+  .todo li{display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--line);font-size:14.5px}
+  .todo li:last-child{border-bottom:0}
+  .todo .box{flex:none;width:18px;height:18px;border:2px solid var(--tea);border-radius:5px;margin-top:3px}
+  .todo .when{flex:none;font-size:12px;font-weight:800;color:var(--clay);width:66px;margin-top:2px}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .mini{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 16px;font-size:13.5px}
+  .mini h4{margin:0 0 4px;font-size:15px;color:var(--tea)}
+  @media print{ *{-webkit-print-color-adjust:exact;print-color-adjust:exact} .day{break-inside:auto} .item,.h,.leg,.qa{break-inside:avoid} .dhead{break-after:avoid} }
+  .src{font-size:11.5px;color:var(--muted);line-height:1.6;margin-top:22px}
+  .hotels.three{grid-template-columns:1fr 1fr 1fr}
+  .hotels.three .h .price{font-size:20px}
+  .hotels.three .h .n{font-size:14px}
+  .area{font-size:14px;font-weight:800;color:var(--tea);margin:14px 0 6px;display:flex;gap:8px;align-items:center}
+  .area small{font-weight:400;color:var(--muted);font-size:12.5px}
+  .tt{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px}
+  .tt th,.tt td{border-bottom:1px solid var(--line);padding:5px 6px;text-align:left;vertical-align:top}
+  .tt th{background:var(--tea-2);color:var(--tea);font-size:12px}
+  .tt td.t{font-weight:800;white-space:nowrap}
+  .carbox{background:var(--plum-2);border:1px solid #dccfe6;border-radius:16px;padding:12px 16px;font-size:13.5px}
+  .carbox h4{margin:0 0 6px;color:var(--plum);font-size:15px}
+  .carbox table{width:100%;border-collapse:collapse;margin-top:6px}
+  .carbox td{padding:4px 6px;border-bottom:1px dashed #d6c8e0;font-size:13px}
+</style>
+</head>
+<body>
+
+<!-- ======== 封面 ======== -->
+<div class="cover">
+  <svg viewBox="0 0 760 430" preserveAspectRatio="none" aria-hidden="true">
+    <circle cx="600" cy="150" r="46" fill="#fff4d6" opacity=".9"/>
+    <circle cx="600" cy="150" r="70" fill="#fff4d6" opacity=".25"/>
+    <path d="M0 250 Q120 190 230 235 T470 215 T760 230 L760 430 L0 430Z" fill="#9dbfa6" opacity=".7"/>
+    <path d="M0 290 Q150 235 300 280 T560 265 T760 285 L760 430 L0 430Z" fill="#6f9f7f" opacity=".85"/>
+    <g fill="#ffffff" opacity=".55">
+      <ellipse cx="170" cy="272" rx="120" ry="12"/><ellipse cx="520" cy="262" rx="150" ry="11"/><ellipse cx="360" cy="296" rx="110" ry="9"/>
+    </g>
+    <path d="M0 330 Q190 280 380 325 T760 318 L760 430 L0 430Z" fill="#3f7c5a"/>
+    <g stroke="#2f6b4f" stroke-width="2" fill="none" opacity=".5">
+      <path d="M0 360 Q190 318 380 356 T760 350"/><path d="M0 380 Q190 340 380 376 T760 372"/><path d="M0 400 Q190 362 380 396 T760 394"/>
+    </g>
+    <path d="M0 410 Q200 380 400 408 T760 404 L760 430 L0 430Z" fill="#2f6b4f"/>
+  </svg>
+  <div class="txt">
+    <span class="eyebrow">10.5 — 10.11 · 两个人 · 公共交通</span>
+    <h1 class="kai">云南七日慢旅行</h1>
+    <div class="sub kai">雨林 · 茶山 · 古寨 · 一次日出云海</div>
+  </div>
+  <div class="facts">
+    <div><b>7 天 6 晚</b>版纳 3 · 景迈 2 · 昆明/普洱 1</div>
+    <div><b>≤ 300 元</b>每晚住宿，吃喝不贵</div>
+    <div><b>1 次</b>日出云海，其余时间逛寨子</div>
+    <div><b>🍃 采茶</b>景迈山秋茶季</div>
+  </div>
+</div>
+
+<div class="route">
+  <div class="line">
+    <div class="st"><div class="dot">版</div><b>西双版纳</b><small>10.5–10.7<br>已订好住宿</small><span class="mode">🚐 金孔雀直达 4h</span></div>
+    <div class="st"><div class="dot">景</div><b>景迈山</b><small>10.8–10.10 早<br>住 2 晚</small><span class="mode">🚐 金孔雀直达 3.5h</span></div>
+    <div class="st"><div class="dot">普</div><b>普洱</b><small>10.10 白天</small><span class="mode">🚄 C278 3h</span></div>
+    <div class="st"><div class="dot">昆</div><b>昆明</b><small>10.10 住 1 晚<br>10.11 午后飞</small></div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<div class="legend">
+  <span class="ic i-bus">🚐 班车</span><span class="ic i-car">🚗 打车/拼车</span><span class="ic i-train">🚄 高铁/地铁</span><span class="ic i-walk">🚶 步行</span><span class="ic i-sun">🌅 日出</span><span class="ic i-eat">🍜 吃</span><span class="ic i-tea">🍃 采茶</span>
+  <span class="alt-demo">黄条 = 人多 / 下雨 / 订不上时的备选</span><span class="new">补充</span>= 版纳原攻略之外补的
+</div>
+
+<div class="card qa" style="margin-top:18px">
+  <h3>❓ 10.7 当天能上景迈山吗？</h3>
+  <p><span class="pill p-no">按原计划不行</span>金孔雀「景洪 → 景迈山」直达车<b>最后一班 14:30</b>；而 10.7 从野象谷回版纳的高铁是 <b>14:32</b> 或 <b>18:28</b>，曼掌村玩完赶不上。</p>
+  <p><span class="pill p-yes">唯一办法</span>放弃曼掌村，10.7 下午 13:30 / 14:30 从告庄坐直达车，傍晚 18:00–19:00 到山上。</p>
+  <p><span class="pill p-yes">建议</span><b>10.8 早上出发</b>，版纳行程不砍；而且现在有直达车，10.8 中午就能到山上。</p>
+</div>
+
+<!-- ======== 每日 ======== -->
+<div class="sec"><span class="no">01</span><h2>每天怎么过</h2><span class="hint">按时间从上往下看</span></div>
+
+<!-- 10.5 -->
+<div class="day">
+  <div class="dhead bn"><div><div class="d">10.5</div><div class="w">周一</div></div><div class="t">曼听公园 · 告庄夜市<small>版纳第 1 天 · 只玩曼听 + 夜市，不奔波</small></div><span class="place">📍 景洪</span></div>
+  <div class="tl">
+    <div class="item"><div class="tm">15:00<br>17:30</div><div class="rail"></div><div><div class="ti">曼听公园 + 总佛寺</div><div class="ds">联票 40 元，下午光线柔和好拍照。总佛寺要遮住肩膀和膝盖，脱鞋入殿。</div><div class="alt"><b class="a">备选</b>下雨或人太多：只进总佛寺，然后回告庄逛街。</div></div></div>
+    <div class="item"><div class="tm">16:00</div><div class="rail"></div><div><div class="ti">线上给春武里取号</div><div class="ds">16 点放号，号很紧张；拿到号不用在店里干等。</div></div></div>
+    <div class="item"><div class="tm">傍晚</div><div class="rail"></div><div><div class="ti"><span class="ic i-car">🚗 打车</span> 回告庄 · 碗记点心</div><div class="ds">7-11 拍照；碗记点心买斑斓冰面包当明早早餐。</div><div class="alt"><b class="a">备选</b>面包卖完：明早在告庄吃碗米线 / 米干。</div></div></div>
+    <div class="item hl"><div class="tm">晚饭</div><div class="rail"></div><div><div class="ti"><span class="ic i-eat">🍜</span> 春武里</div><div class="ds">网红店，常排 2–3 小时。<span class="new">补充</span>国庆假期里排队更久。</div><div class="alt"><b class="a">备选</b>告庄本地傣味馆：舂鸡脚、柠檬鸡翅、芒果糯米饭。</div></div></div>
+    <div class="item"><div class="tm">饭后</div><div class="rail"></div><div><div class="ti"><span class="ic i-walk">🚶</span> 大金塔 → 星光夜市 → 青岛游乡美食广场</div><div class="ds">夜市逛街拍照，美食广场吃烧烤，多比较几家价格。</div><div class="alt"><b class="a">备选</b>美食广场太挤：夜市小吃摊边走边吃。</div></div></div>
+  </div>
+  <div class="foot-tip"><span>👗 浅色长裙 / 吊带 + <b>薄开衫</b> + 防滑鞋</span><span>💡 夜市银饰玉石别买；低价写真先问清全部费用</span></div>
+</div>
+
+<!-- 10.6 -->
+<div class="day">
+  <div class="dhead bn"><div><div class="d">10.6</div><div class="w">周二</div></div><div class="t">基诺山巴朵幽谷 · 雨林溯溪<small>版纳第 2 天 · 蝙蝠侠 6–9 人小团，全程 4–5 小时</small></div><span class="place">📍 基诺山</span></div>
+  <div class="tl">
+    <div class="item"><div class="tm">早上</div><div class="rail"></div><div><div class="ti"><span class="ic i-car">🚗 小团接送</span> 酒店门口上车</div><div class="ds">速干长袖长裤，裤脚扎进袜子防蚂蟥；带换洗衣物、充电宝、驱蚊液、雨衣。<span class="new">补充</span>提前订团，把酒店名发给领队。</div></div></div>
+    <div class="item hl"><div class="tm">白天</div><div class="rail"></div><div><div class="ti">巴朵幽谷溯溪</div><div class="ds">沿着溪水往上游走。紧跟向导，不离队，不碰野果植物；信号弱，没补给。</div><div class="alt"><b class="a">备选</b>大雨团取消：睡懒觉，下午告庄喝咖啡 + 按摩。</div></div></div>
+    <div class="item"><div class="tm">回来</div><div class="rail"></div><div><div class="ti">回酒店洗澡换衣服</div><div class="ds">会浑身泥水。</div></div></div>
+    <div class="item"><div class="tm">晚饭</div><div class="rail"></div><div><div class="ti"><span class="ic i-eat">🍜</span> 老仓醋米线 → 农贸市场 → 按摩</div><div class="alt"><b class="a">备选</b>米线店排队：农贸市场的傣味小吃（烤鱼、包烧）边逛边吃。</div></div></div>
+  </div>
+  <div class="foot-tip"><span>📵 山里容易失联，提前跟家人说一声</span><span>🎒 贵重物品少带</span></div>
+</div>
+
+<!-- 10.7 -->
+<div class="day">
+  <div class="dhead bn"><div><div class="d">10.7</div><div class="w">周三</div></div><div class="t">曼掌村非遗手工 · 晚上菌子火锅<small>版纳第 3 天 · 按高铁时刻调整：中午去、傍晚回</small></div><span class="place">📍 曼掌村</span></div>
+  <div class="tl">
+    <div class="item"><div class="tm">上午</div><div class="rail"></div><div><div class="ti">告庄睡懒觉、休整</div><div class="ds">斑斓冰面包当早餐。</div></div></div>
+    <div class="item hl"><div class="tm">12:10</div><div class="rail"></div><div><div class="ti"><span class="ic i-train">🚄 C4220</span> 西双版纳站 12:10 → 野象谷站 12:21 · 10 元</div><div class="ds">11 分钟。出站骑共享电驴 / 坐三轮约 2 公里到曼掌村。<span class="new">补充</span>原攻略“下午去、16–17 点回”接不上高铁，已按实际班次改。</div><div class="alt"><b class="a">备选</b>早一班：C310 11:47 → 11:58（10 元）。</div></div></div>
+    <div class="item"><div class="tm">午饭</div><div class="rail"></div><div><div class="ti"><span class="ic i-eat">🍜</span> 曼掌村里吃傣味烤鸡</div><div class="ds">配老挝冰咖啡。</div></div></div>
+    <div class="item"><div class="tm">13:00<br>18:00</div><div class="rail"></div><div><div class="ti">傣纸造纸 · 豆荚手工 · 慢慢逛</div><div class="ds">手工 20–40 元，体验前先问价，可以讲价。</div></div></div>
+    <div class="item hl"><div class="tm">18:28</div><div class="rail"></div><div><div class="ti"><span class="ic i-train">🚄 C311</span> 野象谷站 18:28 → 西双版纳站 18:40 · 9 元</div><div class="ds">当天最后一班，<b>别错过</b>。</div><div class="alt"><b class="a">备选</b>玩够了早点回：C317 14:32 → 14:44（11 元）。</div></div></div>
+    <div class="item"><div class="tm">晚饭</div><div class="rail"></div><div><div class="ti"><span class="ic i-eat">🍜</span> 菌喜四季 · 菌子火锅（挪到晚上）</div><div class="ds">菌子全部煮熟、吃菌不喝酒；头晕恶心立刻就医。</div><div class="alt"><b class="a">备选</b>排队太久：大众点评搜“菌子火锅”按评分挑告庄附近另一家。</div></div></div>
+    <div class="item"><div class="tm">睡前</div><div class="rail"></div><div><div class="ti">收行李 <span class="new">补充</span></div><div class="ds">明早 8:25 上车；买点零食和水带上山（山上物价偏高）。</div></div></div>
+  </div>
+  <div class="foot-tip"><span>👕 短袖 + 薄长裤</span><span>🦟 寨子蚊虫多，勤喷驱蚊液；进民家脱鞋</span></div>
+</div>
+
+<!-- 10.8 -->
+<div class="day">
+  <div class="dhead jm"><div><div class="d">10.8</div><div class="w">周四</div></div><div class="t">金孔雀直达上山 · 芒景看古树<small>景迈第 1 天 · 车上约 4 小时，下午就在住处附近走走</small></div><span class="place">📍 芒景</span></div>
+  <div class="tl">
+    <div class="item hl"><div class="tm">08:25</div><div class="rail"></div><div><div class="ti"><span class="ic i-bus">🚐 金孔雀直达</span> 告庄西双景上车 → 景迈山 · 120 元/人</div><div class="ds">8 座商务车，约 4–4.5 小时。在「金孔雀票务」小程序买「景洪 → 景迈山」，上车点选<b>告庄西双景</b>，下车点选<b>芒景</b>（上车后告诉司机民宿名，会停在最近的路口）。司机发车前 30 分钟打电话。容易晕车的选前排、提前吃晕车药。</div><div class="alt"><b class="a">备选</b>这班满了：8:40 / 8:50 / 9:15 / 9:45（同价）。都没票：版纳客运站坐大巴到惠民（44 元）→ 惠民信用社路口坐景区公交上山（15 元，13:00 那班）。</div></div></div>
+    <div class="item"><div class="tm">约 12:45</div><div class="rail"></div><div><div class="ti">到芒景上寨，入住</div><div class="ds">跟老板约好：明天采茶、后天早上的车；要几个山上司机的电话。</div></div></div>
+    <div class="item"><div class="tm">午饭</div><div class="rail"></div><div><div class="ti"><span class="ic i-eat">🍜</span> 芒景本地小馆</div><div class="ds">路过山附近有<b>明珍布朗饭店</b>、<b>布朗风味菜馆</b>，都是家常菜，走路 10 分钟内。</div><div class="alt"><b class="a">备选</b>民宿楼下的早点见面早晚点吃碗米线。</div></div></div>
+    <div class="item"><div class="tm">16:00<br>18:00</div><div class="rail"></div><div><div class="ti"><span class="ic i-walk">🚶</span> 芒景：公主榕 · 蜂王树 · 茶祖庙</div><div class="ds">都在民宿步行 1 公里内。蜂王树一棵树上挂着几十个蜂巢，很震撼。</div><div class="alt"><b class="a">备选</b>下雨：在民宿喝茶，或去阿莱夫咖啡馆坐一会。</div></div></div>
+    <div class="item"><div class="tm">晚饭</div><div class="rail"></div><div><div class="ti"><span class="ic i-eat">🍜</span> 芒洪 · 如愿茶饭店（量足、实惠）</div><div class="ds"><span class="ic i-walk">🚶</span> 走到芒洪约 30 分钟，或让民宿叫车（约 15 元/人）。</div><div class="alt"><b class="a">备选</b>秋胤饭店（布朗家常菜）→ 古寨饭店（烤鱼）。不想走远：就在芒景的布朗饭馆吃。</div></div></div>
+  </div>
+  <div class="foot-tip"><span>🧥 山上早晚凉，带外套、穿运动鞋</span><span>🌇 不专门看日落，露台碰到就当赚到</span></div>
+</div>
+
+<!-- 10.9 -->
+<div class="day">
+  <div class="dhead jm"><div><div class="d">10.9</div><div class="w">周五</div></div><div class="t">日出云海 · 采茶 · 糯干 + 翁基<small>景迈第 2 天 · 全程唯一一次日出</small></div><span class="place">📍 芒洪 · 糯干 · 翁基</span></div>
+  <div class="tl">
+    <div class="item"><div class="tm">06:15</div><div class="rail"></div><div><div class="ti"><span class="ic i-walk">🚶 步行 2.3 公里 · 32 分钟</span> 路过山 → 芒洪八角塔</div><div class="ds">天还黑，带手电 / 手机照明。不想走：前一晚请民宿约车（约 15 元/人）。</div></div></div>
+    <div class="item hl"><div class="tm">06:45<br>07:40</div><div class="rail"></div><div><div class="ti"><span class="ic i-sun">🌅</span> 日出 + 云海（这趟只看这一次）</div><div class="ds">机位：<b>八角塔旁边的小坡</b>，或<b>云海铂境客栈对面的小路</b>上坡。日出约 7:10。云海要看运气，前一天下过雨、第二天放晴时机会最大。</div><div class="alt"><b class="a">备选</b>下雨或大雾：不出门，直接睡觉。</div></div></div>
+    <div class="item"><div class="tm">08:00</div><div class="rail"></div><div><div class="ti"><span class="ic i-walk">🚶 32 分钟</span> 走回民宿吃早饭</div></div></div>
+    <div class="item hl"><div class="tm">09:30<br>11:30</div><div class="rail"></div><div><div class="ti"><span class="ic i-tea">🍃</span> 采茶 · 品茶 · 制茶 — 澜沧三勇茶厂 · 88 元/人</div><div class="ds"><span class="ic i-walk">🚶 1 公里 · 14 分钟</span> 同在芒景上寨。老板开车带去大路边的茶园（不用爬山），给草帽背篓，教“两叶一芽”，采约 2 小时；回茶厂免费品五种茶；采的茶做成白茶或生普，<b>我们第二天一早要走，让老板邮寄到付</b>。<b>提前一天预约。</b></div><div class="alt"><b class="a">备选 ①</b>问茶坊（芒景）：9:30 出发，采茶 → 在老板家吃饭 → 炒、揉、蒸、<b>压自己的茶饼</b> → 13:30 品茶，内容更全、时间更长；要提前一天约。<br><b class="a">备选 ②</b>请民宿老板介绍自家或亲戚的茶地。<br><b class="a">备选 ③</b>都约不上：10.10 在普洱补（见 10.10）。</div></div></div>
+    <div class="item"><div class="tm">12:00</div><div class="rail"></div><div><div class="ti"><span class="ic i-car">🚗 拼车 10 公里 · 27 分钟</span> 芒景 → 糯干古寨</div><div class="ds">山上<b>没有网约车</b>，请民宿老板帮叫当地司机，约 25–30 元/人，上车前说好价。</div></div></div>
+    <div class="item"><div class="tm">午饭</div><div class="rail"></div><div><div class="ti"><span class="ic i-eat">🍜</span> 糯干古寨 100 号饭店</div><div class="ds">分店的烤鸡（两人半只就够）、水蕨菜、茶叶炒牛肉；糯干吃饭比芒洪便宜。新寨老寨都有店，一家满了去另一家。</div><div class="alt"><b class="a">备选</b>繁花似锦（百香果牛肉米线）→ 任一傣味馆吃手抓饭、茶叶炒蛋。</div></div></div>
+    <div class="item"><div class="tm">13:30<br>16:00</div><div class="rail"></div><div><div class="ti"><span class="ic i-walk">🚶</span> 逛糯干</div><div class="ds">糯干佛寺、观景台；小店：感官上下、里庭、隐栀（只逛不一定买）。找一家茶室坐下喝茶发呆。</div><div class="alt"><b class="a">备选</b>山神屋、雨林絮语、北归咖仓。</div></div></div>
+    <div class="item"><div class="tm">16:00</div><div class="rail"></div><div><div class="ti"><span class="ic i-car">🚗 拼车 9.2 公里 · 25 分钟</span> 糯干 → 翁基古寨</div><div class="ds">约 15–25 元/人；走路要 1 小时 44 分，不建议。</div></div></div>
+    <div class="item"><div class="tm">16:30<br>18:30</div><div class="rail"></div><div><div class="ti"><span class="ic i-walk">🚶</span> 翁基古寨</div><div class="ds">寨子不大，看翁基古佛寺和千年古柏就够。31 号洱的咖啡馆喝杯牛油果咖啡。</div><div class="alt"><b class="a">备选</b>累了就跳过翁基，从糯干直接叫车回芒景（约 25–30 元/人）。</div></div></div>
+    <div class="item"><div class="tm">晚饭</div><div class="rail"></div><div><div class="ti"><span class="ic i-eat">🍜</span> 翁基 40 号饭店（百香果煮鱼）</div><div class="ds">吃完 <span class="ic i-car">🚗 叫车约 15 元/人</span> 回芒景（步行 2.6 公里、35 分钟，但天黑山路不建议）。<b>确认明早 8:30 的金孔雀。</b></div><div class="alt"><b class="a">备选</b>55 号饭店（酸笋鱼）→ 民族饭店（看山景）。</div></div></div>
+  </div>
+  <div class="foot-tip"><span>👟 采茶穿防滑鞋、戴帽子，防晒防蚊</span><span>💰 山上没有网约车，拼车现金 / 微信都备着</span></div>
+</div>
+
+<!-- 10.10 -->
+<div class="day">
+  <div class="dhead pe"><div><div class="d">10.10</div><div class="w">周六</div></div><div class="t">金孔雀直达普洱 · 逛老城 · 夜车到昆明<small>一路往北，不走回头路</small></div><span class="place">📍 普洱思茅</span></div>
+  <div class="tl">
+    <div class="item"><div class="tm">07:30</div><div class="rail"></div><div><div class="ti">早饭 · 退房</div></div></div>
+    <div class="item hl"><div class="tm">08:30</div><div class="rail"></div><div><div class="ti"><span class="ic i-bus">🚐 金孔雀直达</span> 景迈山 → 思茅（普洱）· 150 元/人</div><div class="ds">约 3.5 小时。小程序买「景迈山 → 思茅」，上车点选<b>蜂王树路口（芒景）</b>或<b>芒景村公所</b>，下车点选<b>思茅汽车客运站（五一路）</b>。司机提前 30 分钟打电话，可以请他在离民宿最近的地方接、帮忙搬行李。</div><div class="alt"><b class="a">备选</b>8:10 / 9:00 / 9:30 / 10:00（同价，全天约 20 班）。</div></div></div>
+    <div class="item"><div class="tm">约 12:00</div><div class="rail"></div><div><div class="ti"><span class="ic i-walk">🚶 约 5 分钟</span> 思茅汽车站 → 戴家巷 · 午饭 + 咖啡</div><div class="ds">老城巷子，免费。本地小馆吃米线；找“巷里咖啡”（木门没招牌），本地豆拿铁约 20 元。</div><div class="alt"><b class="a">备选</b>雷比咖啡（招牌“小红帽”），或巷子里任意本地豆咖啡馆。</div></div></div>
+    <div class="item"><div class="tm">14:00</div><div class="rail"></div><div><div class="ti"><span class="ic i-car">🚗 打车 5.7 公里 · 16 分钟</span> → 梅子湖公园观景台</div><div class="ds">免费，湖边步道 + 观景台，不用爬高，人少。市区可以用滴滴 / 高德打车。</div><div class="alt"><b class="a">备选 ①</b>景迈山没采成茶：<b>彝家茶乡园体验店</b>（离市区近，50–60 元/人，美团 / 大众点评团购）。<br><b class="a">备选 ②</b>渡山非遗工作室做豆荚娃娃（40 元两个）。<br><b class="a">备选 ③</b>茶马古道遗址公园（8:30–17:00）。</div></div></div>
+    <div class="item"><div class="tm">16:00</div><div class="rail"></div><div><div class="ti"><span class="ic i-car">🚗 打车 8.9 公里 · 16 分钟</span> → 茶马古城旅游小镇 · 早晚饭</div><div class="ds">香茅草烤鱼 + 野菜，两人约 60 元。</div><div class="alt"><b class="a">备选</b>人多：小镇里的米线 / 烧烤小摊。</div></div></div>
+    <div class="item"><div class="tm">17:40</div><div class="rail"></div><div><div class="ti"><span class="ic i-car">🚗 打车 12.2 公里 · 约 25 分钟</span> → 普洱站</div><div class="ds">提前 20 分钟到站过安检。</div></div></div>
+    <div class="item hl"><div class="tm">18:33</div><div class="rail"></div><div><div class="ti"><span class="ic i-train">🚄 C278</span> 普洱 18:33 → 昆明南 21:32 · 154 元</div><div class="ds"><b>10 月 1 日早上 5:00 开售</b>，记得抢。</div><div class="alt"><b class="a">备选</b>C274 18:13 → 21:12（176 元）；C286 17:00 → 19:50（164 元）。</div></div></div>
+    <div class="item"><div class="tm">21:45</div><div class="rail"></div><div><div class="ti"><span class="ic i-car">🚗 酒店接站 / 打车</span> 入住昆明南站附近</div></div></div>
+  </div>
+  <div class="foot-tip"><span>🧳 行李：到思茅汽车站先问有没有行李寄存（没查到确切信息）；没有就带着 20 寸箱逛平路，梅子湖可以跳过</span></div>
+</div>
+
+<!-- 10.11 -->
+<div class="day">
+  <div class="dhead km"><div><div class="d">10.11</div><div class="w">周日</div></div><div class="t">睡到自然醒 · 去长水机场<small>飞机下午一点多</small></div><span class="place">📍 昆明</span></div>
+  <div class="tl">
+    <div class="item"><div class="tm">09:00</div><div class="rail"></div><div><div class="ti">早饭 · 退房</div></div></div>
+    <div class="item hl"><div class="tm">10:00</div><div class="rail"></div><div><div class="ti"><span class="ic i-train">🚇 地铁约 1 小时</span> 昆明南站 → 长水机场</div><div class="ds">4 号线（昆明南火车站）→ 菊华站换 6 号线 → 机场中心站。</div><div class="alt"><b class="a">备选</b>行李多：打车约 50 分钟。</div></div></div>
+    <div class="item"><div class="tm">11:15</div><div class="rail"></div><div><div class="ti">到机场值机，宽裕</div></div></div>
+  </div>
+  <div class="foot-tip"><span>🅱️ 想住普洱也行：10.11 坐 <b>D276 07:57 → 昆明南 10:45</b>（154 元），地铁到机场约 11:50，比较赶，只剩这一班来得及。普洱住宿见下面。</span></div>
+</div>
+
+<!-- ======== 交通 ======== -->
+<div class="sec"><span class="no">02</span><h2>交通一张表</h2><span class="hint">车次 / 班次 / 价格 / 在哪买</span></div>
+<div class="card">
+  <table class="tt">
+    <tr><th>日期</th><th>班次</th><th>从 → 到</th><th>价格</th><th>在哪买 / 注意</th></tr>
+    <tr><td>10.7</td><td class="t">C4220 12:10→12:21</td><td>西双版纳站 → 野象谷站</td><td>10 元</td><td>12306 / 携程；备选 C310 11:47</td></tr>
+    <tr><td>10.7</td><td class="t">C311 18:28→18:40</td><td>野象谷站 → 西双版纳站</td><td>9 元</td><td>当天末班；备选 C317 14:32</td></tr>
+    <tr><td>10.8</td><td class="t">金孔雀 08:25</td><td>告庄西双景 → 景迈山芒景</td><td>120 元</td><td>「金孔雀票务」；约 4–4.5h；备选 8:40 / 8:50 / 9:15</td></tr>
+    <tr><td>10.9</td><td class="t">步行</td><td>路过山 → 芒洪八角塔</td><td>—</td><td>2.3 公里 · 32 分钟</td></tr>
+    <tr><td>10.9</td><td class="t">步行</td><td>路过山 → 三勇茶厂</td><td>—</td><td>1 公里 · 14 分钟</td></tr>
+    <tr><td>10.9</td><td class="t">拼车</td><td>芒景 → 糯干</td><td>约 25–30 元/人</td><td>10 公里 · 27 分钟；民宿老板叫车</td></tr>
+    <tr><td>10.9</td><td class="t">拼车</td><td>糯干 → 翁基</td><td>约 15–25 元/人</td><td>9.2 公里 · 25 分钟</td></tr>
+    <tr><td>10.9</td><td class="t">拼车</td><td>翁基 → 芒景</td><td>约 15 元/人</td><td>2.6 公里；白天也可步行 35 分钟</td></tr>
+    <tr><td>10.10</td><td class="t">金孔雀 08:30</td><td>景迈山芒景 → 思茅汽车站</td><td>150 元</td><td>「金孔雀票务」；约 3.5h；备选 9:00 / 9:30</td></tr>
+    <tr><td>10.10</td><td class="t">打车</td><td>戴家巷 → 梅子湖 → 茶马古城 → 普洱站</td><td>—</td><td>5.7 / 8.9 / 12.2 公里；滴滴、高德打车</td></tr>
+    <tr><td>10.10</td><td class="t">C278 18:33→21:32</td><td>普洱 → 昆明南</td><td>154 元</td><td><b>10.1 05:00 开售</b>；备选 C274 18:13</td></tr>
+    <tr><td>10.11</td><td class="t">地铁 4→6 号线</td><td>昆明南 → 长水机场</td><td>—</td><td>约 1 小时；菊华站换乘</td></tr>
+  </table>
+  <div class="carbox" style="margin-top:14px">
+    <h4>🚗 山上叫车怎么办</h4>
+    景迈山各寨子之间<b>没有滴滴等网约车</b>。入住当天就问民宿老板要 2–3 个当地司机电话，要坐车时提前 20–30 分钟打过去，上车前说好价，一般 <b>15–30 元/人</b>，按远近算。金孔雀直达车司机也会在离民宿最近的路口停，出发前打电话告诉他民宿名。
+  </div>
+  <div class="alt" style="margin-top:10px">金孔雀时刻来自其官方小红书账号（2026 年 9 月发布）：景洪 → 景迈山 8:00–14:30 共 14 班，景迈山 → 思茅 8:10–17:40 共 23 班。节假日提前 1–3 天买。</div>
+</div>
+
+<!-- ======== 住宿 ======== -->
+<div class="sec"><span class="no">03</span><h2>住哪（你来挑）</h2><span class="hint">携程 9.29 实时价 · 2 成人 · 每晚</span></div>
+<p style="margin:0 0 6px;color:var(--muted);font-size:13px">版纳已订好，不再列。价格含“新客优惠”，你们俩账号看到的可能不同；品质相近就选最便宜的。</p>
+
+<div class="card hgroup">
+  <h3>🌿 景迈山 · 10.8 入住 · 2 晚</h3>
+  <div class="gsub">住哪个寨子会影响每天怎么走：芒景 / 芒洪最方便（日出和采茶都能走过去）；住糯干吃饭便宜、好逛，但看日出要叫车。</div>
+
+  <div class="area">① 芒景 / 芒洪 <small>行程按这里排，最省事</small></div>
+  <div class="hotels three">
+    <div class="h top"><span class="badge">首选</span><div class="n">路过山民宿</div><div class="where">芒景上寨</div><div class="row"><div class="price">¥310</div><span class="score">4.5 · 188</span></div><div class="why">含双早；卫生 4.6，点评都说干净；新开。<i>略超 300</i></div></div>
+    <div class="h top"><span class="badge g">300 以内</span><div class="n">腊平阿佤客栈</div><div class="where">芒景 · 公主榕旁</div><div class="row"><div class="price">¥295</div><span class="score">4.6 · 74</span></div><div class="why">离芒洪 1.6 公里；一层标准大床房。</div></div>
+    <div class="h"><div class="n">云上青旅（大床房）</div><div class="where">芒洪</div><div class="row"><div class="price">¥279</div><span class="score">4.5 · 107</span></div><div class="why">离八角塔最近，阳台看日出。<i>青旅氛围，有住客说要点蚊香</i></div></div>
+    <div class="h"><div class="n">岩荣茶厂民宿</div><div class="where">芒洪附近</div><div class="row"><div class="price">¥210</div><span class="score">4.6 · 44</span></div><div class="why">含早，茶厂自营。<i>这个价是公共卫生间房</i></div></div>
+  </div>
+
+  <div class="area">② 翁基 <small>日落在房间看；看日出要叫车 / 走 35 分钟到芒景再上坡</small></div>
+  <div class="hotels three">
+    <div class="h top"><span class="badge g">300 以内</span><div class="n">遇见景迈 46 号</div><div class="where">翁基古寨中心</div><div class="row"><div class="price">¥284</div><span class="score">4.6 · 55</span></div><div class="why">出门就有饭吃。<i>木楼隔音差，干湿不分</i></div></div>
+  </div>
+
+  <div class="area">③ 糯干 <small>最好逛、吃饭便宜；日出 / 采茶要叫车（约 27 分钟）</small></div>
+  <div class="hotels three">
+    <div class="h top"><span class="badge">便宜好评</span><div class="n">南黎客栈</div><div class="where">糯干</div><div class="row"><div class="price">¥209</div><span class="score">4.8 · 174</span></div><div class="why">“很新很干净”；露台标间。</div></div>
+    <div class="h"><div class="n">景玉客栈</div><div class="where">糯干古寨</div><div class="row"><div class="price">¥253</div><span class="score">4.7 · 95</span></div><div class="why">老板夫妇热情实在。</div></div>
+    <div class="h"><div class="n">茶山小月客栈</div><div class="where">糯干一带</div><div class="row"><div class="price">¥228</div><span class="score">4.6 · 33</span></div><div class="why">标准大床房。</div></div>
+    <div class="h"><div class="n">茶悠小居客栈</div><div class="where">景迈山茶林景区</div><div class="row"><div class="price">¥217</div><span class="score">4.5 · 238</span></div><div class="why">点评多；“设计装修用心温馨”。</div></div>
+    <div class="h"><div class="n">子依客栈</div><div class="where">糯干古寨</div><div class="row"><div class="price">¥260</div><span class="score">4.5 · 64</span></div><div class="why">空调、热水稳定。</div></div>
+  </div>
+
+  <div class="area">④ 景迈大寨 / 勐本 <small>进山口一带，离芒洪 15–18 公里，不开车不推荐</small></div>
+  <div class="hotels three">
+    <div class="h"><div class="n">香韵腊民宿</div><div class="where">勐本</div><div class="row"><div class="price">¥239</div><span class="score">4.9 · 72</span></div><div class="why">含早；推门看日出云海。</div></div>
+    <div class="h"><div class="n">茗缘客栈</div><div class="where">景迈大寨</div><div class="row"><div class="price">¥266</div><span class="score">4.7 · 45</span></div><div class="why">傣族寨子景观。</div></div>
+    <div class="h"><div class="n">古香纯客栈</div><div class="where">景迈大寨一带</div><div class="row"><div class="price">¥188</div><span class="score">4.8 · 11</span></div><div class="why">最便宜之一；评价少。</div></div>
+  </div>
+</div>
+
+<div class="card hgroup">
+  <h3>🏙 昆明南站 · 10.10 入住 · 1 晚（推荐方案）</h3>
+  <div class="gsub">21:32 到站；带“接送站”的最省事</div>
+  <div class="hotels three">
+    <div class="h top"><span class="badge g">接送站</span><div class="n">维也纳国际</div><div class="where">高铁南站市政府店</div><div class="row"><div class="price">¥171</div><span class="score">4.7 · 5289</span></div><div class="why">免费接送南站，有宵夜。</div></div>
+    <div class="h top"><span class="badge g">接送站</span><div class="n">陌上轻居酒店</div><div class="where">南站七彩云南第壹城</div><div class="row"><div class="price">¥161</div><span class="score">4.8 · 454</span></div><div class="why">商务车接送站。</div></div>
+    <div class="h"><div class="n">全季酒店</div><div class="where">涌鑫哈佛中心店</div><div class="row"><div class="price">¥264</div><span class="score">4.8 · 2294</span></div><div class="why">连锁品质稳；离南站 3.7 公里。</div></div>
+    <div class="h"><div class="n">城市便捷</div><div class="where">第七街区店</div><div class="row"><div class="price">¥133</div><span class="score">4.7 · 2007</span></div><div class="why">离南站步行 1.8 公里。</div></div>
+    <div class="h"><div class="n">云汉唐驿酒店</div><div class="where">高铁南站店</div><div class="row"><div class="price">¥92</div><span class="score">4.7 · 338</span></div><div class="why">最便宜；步行 1 公里，有接送站。</div></div>
+    <div class="h"><div class="n">智达酒店</div><div class="where">高铁南站店</div><div class="row"><div class="price">¥100</div><span class="score">4.8 · 124</span></div><div class="why">步行 1.2 公里，老板接送站。</div></div>
+  </div>
+</div>
+
+<div class="card hgroup">
+  <h3>🍵 普洱 · 10.10 入住 · 1 晚（备选方案：第二天坐 D276）</h3>
+  <div class="gsub">4.7 分以上、250 元以内；离普洱站打车约 20–25 分钟</div>
+  <div class="hotels three">
+    <div class="h top"><span class="badge">评分高</span><div class="n">星程酒店</div><div class="where">茶马古镇 B 区</div><div class="row"><div class="price">¥167</div><span class="score">4.9 · 393</span></div><div class="why">在茶马古城，晚饭方便。</div></div>
+    <div class="h top"><span class="badge g">点评多</span><div class="n">梦景·雅格酒店</div><div class="where">茶马古城店</div><div class="row"><div class="price">¥242</div><span class="score">4.8 · 2834</span></div><div class="why">口碑稳。</div></div>
+    <div class="h"><div class="n">普洱长禄酒店</div><div class="where">戴家巷古建筑群</div><div class="row"><div class="price">¥230</div><span class="score">4.7 · 2714</span></div><div class="why">在老城，逛街吃饭方便。</div></div>
+    <div class="h"><div class="n">木舍轻居酒店</div><div class="where">茶马古城店</div><div class="row"><div class="price">¥163</div><span class="score">4.7 · 1201</span></div><div class="why">便宜、点评多。</div></div>
+    <div class="h"><div class="n">普洱豪爵酒店</div><div class="where">戴家巷店</div><div class="row"><div class="price">¥187</div><span class="score">4.7 · 409</span></div><div class="why">老城位置。</div></div>
+    <div class="h"><div class="n">博煜智慧酒店</div><div class="where">思茅机场湿地公园</div><div class="row"><div class="price">¥149</div><span class="score">4.7 · 726</span></div><div class="why">最便宜。</div></div>
+  </div>
+</div>
+
+<!-- ======== 待办 ======== -->
+<div class="sec"><span class="no">04</span><h2>出发前要办的事</h2></div>
+<div class="card">
+  <ul class="todo">
+    <li><span class="box"></span><span class="when">现在</span><span>订景迈山 2 晚 + 昆明（或普洱）1 晚</span></li>
+    <li><span class="box"></span><span class="when">现在</span><span>12306 / 携程买 10.7 <b>C4220</b> 去、<b>C311</b> 回</span></li>
+    <li><span class="box"></span><span class="when">现在</span><span>订巴朵幽谷小团，把酒店名发给领队</span></li>
+    <li><span class="box"></span><span class="when">10.1 05:00</span><span>抢 10.10 <b>C278</b> 普洱 → 昆明南（或 C274 / C286）</span></li>
+    <li><span class="box"></span><span class="when">提前 1–3 天</span><span>「金孔雀票务」买 10.8 <b>08:25 告庄 → 景迈山</b>、10.10 <b>08:30 景迈山 → 思茅</b></span></li>
+    <li><span class="box"></span><span class="when">订民宿时</span><span>问老板：能否帮约 10.9 三勇茶厂 / 问茶坊采茶；要当地司机电话</span></li>
+  </ul>
+</div>
+
+<div class="duo" style="margin-top:14px">
+  <div class="mini"><h4>🌅 日出日落</h4>10 月初日出约 7:10、日落约 19:00；前一晚用天气 App 确认。</div>
+  <div class="mini"><h4>🎒 全程必带</h4>防晒、驱蚊液、止痒膏、肠胃药、晕车药、晴雨伞、充电宝、少量现金、看日出的外套、手电。</div>
+</div>
+
+<div class="src">
+资料来源：你给的《AI 优化版云南西双版纳》；小红书：云南金孔雀交运集团澜沧运输分公司《景迈山班车进出时间刻表》、《全网独家！景迈山公共交通金孔雀选座攻略》、《景迈山的日与夜》、《景迈山｜终于搞明白了，五个寨子游玩攻略》、《去景迈山，一定要做的16件事》、《景迈山4个寨子，我只推荐2个》、《答应我！来景迈山一定要体验一下采茶制茶》、《景迈山采茶体验太棒了》、《毕业旅行第4站～普洱采茶体验攻略》、《普洱🍵一个巨大的成人兴趣班》；普洱文旅交通攻略；携程酒店 / 火车票实时查询（2026-09-29/30）；高德地图驾车 / 步行实测。店铺、班次、价格以出发时实际为准。
+</div>
+
+</div>
+<script>document.body.setAttribute('data-h', document.documentElement.scrollHeight);</script>
+</body>
+</html>
