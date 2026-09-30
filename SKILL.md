@@ -23,6 +23,12 @@ Check which of these you have, and say up front what you'll do without the missi
 
 Hard limits you must respect: never log in for the user, never type passwords, never solve CAPTCHAs or "security verification" pages, never book or pay. When a site needs login or shows verification, stop, tell the user which site and what you need, and continue with other work meanwhile.
 
+### 使用前准备（向用户说明）
+
+浏览器操作高德路书、小红书或账号专属报价时，请用户在 AI 实际控制的电脑浏览器及对应配置中登录。手机、另一浏览器或另一配置的登录态不能视为当前可用；先检查实际页面。高德还需要准确的目标路书 URL 和编辑权限。飞书 CLI/连接器需要独立授权与文档权限，不能用网页登录代替。
+
+遇到扫码、短信验证码、滑块或安全校验，暂停该平台操作，由用户手动完成；收到完成通知后重新读取页面确认恢复，再接着做。继续不依赖该平台的工作。没有相应登录/权限/工具时交付可完成的本地内容，并逐项标记远程交付缺口。
+
 ## 1. Collect requirements (one round, then act)
 
 Ask only what changes the plan. Use a single multi-question prompt if possible:

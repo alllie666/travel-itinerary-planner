@@ -1,27 +1,27 @@
-# Anonymized co-creation cases
+# 共创旅行案例（脱敏）
 
-These examples capture planning decisions, not current destination recommendations. Names, travel dates, flight/booking numbers, accounts, private chat links and precise camping locations are omitted. Do not infer live fares or schedules from them.
+案例 A 来自川西自驾旅行的规划与修订，案例 B 来自云南公共交通旅行；案例 C 是用于后续评估的混合交通场景。这里只保留需求、踩坑和方法，未上传完整原始行程、私人对话、出行日期、航班/订单号、账号、内部文档链接或精确营地位置。不能据此推断当前价格、班次和路况。
 
-## Case A — Flexible nature-focused self-drive
+## 案例 A：川西自然景点自驾与弹性徒步
 
-**Input:** A multi-day mountain circuit, long driving days accepted, repeated sights excluded, food/lodging chosen en route, EV constraints, uncertain multi-day hiking duration.
+**需求：** 多日山地环线，可以接受较长驾驶日，不重复已去过的景点，住宿吃饭自行沿途解决，使用电车，多日徒步天数根据实际情况调整。
 
-**Problems:** A distant photo stop created a long detour; the itinerary named towns without explaining visits; a short first driving day ignored the traveller's capacity; different end/start POIs broke the daily route; hiking was fixed too rigidly.
+**踩过的坑：** 为一个拍照点大幅绕行；路书只有县城乡镇，到了却不知道玩什么；第一天过早收车，没用上用户给出的驾驶能力；跨天起终点不是同一个 POI，线路断开；徒步天数写得过死。
 
-**Resulting workflow:** Build the geographic circuit first; remove low-value detours; keep exact sights/access points; balance mapped driving with visits; use a hiking window and exit branches; verify Amap day connections and synchronize Feishu.
+**沉淀的方法：** 先检查地理顺序，删除低价值绕行；保留准确景点与入口；结合地图驾驶量和游玩时间安排每天；徒步使用窗口和退出支线；回读高德跨天衔接，并同步飞书攻略。
 
-**Exercise:** Given “up to eight hours of driving, no fixed hotels, natural sights only, hiking may end early, Amap + Feishu”, the Skill should route to self-drive, omit hotel/restaurant shortlists, explain each sight, include cut order and read back both remote outputs. It should not impose relaxed public-transport pacing or fabricate kilometres.
+**评估输入：** “每天最多驾驶八小时，不固定酒店，只玩自然景点，徒步可能提前结束，输出高德和飞书。”预期按自驾规则处理，省略酒店餐厅清单，说明每个景点的理由和删减顺序，并回读两个平台。不能强行套用慢节奏公共交通模板或编造公里数。
 
-## Case B — Relaxed public-transport and food trip
+## 案例 B：云南公共交通慢旅行与体验研究
 
-**Input:** A week across several bases by train/bus, shared accommodation budget, comfort preferences, named food/experiences, one memorable early start, phone-friendly guide.
+**需求：** 一周内乘火车和班车游玩多个地区，住宿有预算与舒适性要求，需要具体餐饮、体验和一次值得早起的活动，攻略便于手机阅读。
 
-**Problems:** Rural direct buses were missing from map proposals; a hotel looked nearby but was impractical without a car; outbound trains existed but return departures did not match the day; a very tall image was awkward on a phone.
+**踩过的坑：** 地图漏掉乡村直达班车；酒店看起来近但无车难到；只核实去程，返程班次接不上；一张过长图片在手机上阅读不便。
 
-**Resulting workflow:** Research recent same-season notes; verify operator schedules and both train directions; compare dated hotel prices, hygiene and reachability; include named backups; render swipable pages.
+**沉淀的方法：** 研究近期同季节攻略；核验运营方时刻表和双向班次；比较指定日期酒店价格、卫生和到达方式；保留具体备选；生成可滑动阅读的分页图片。
 
-**Exercise:** Given “public transport, research hotels, one sunrise, paged images only”, the Skill should verify last departures and hotel access, preserve named meal backups, render pages and omit Amap roadbook editing and unsolicited PDFs.
+**评估输入：** “公共交通，需要酒店研究，一次日出，只要分页图片。”预期核实末班与酒店可达性，保留餐饮备选，输出分页图片，不编辑高德路书或额外生成 PDF。
 
-## Case C — Mixed transport with output preference
+## 案例 C：混合交通与指定格式（评估场景）
 
-**Exercise:** Given “train to a regional hub, rent an EV for three days, return by train, HTML only”, verify scheduled legs and pickup/return time, plan charging and driving limits, and deliver an editable HTML guide. If later asked to write a named Amap plan, reuse the same route version and verify the write; do not create another unrelated itinerary.
+**评估输入：** “高铁到一个区域中心，再租电车三天，高铁返程，只要 HTML。”预期核对班次与取还车衔接，安排补能和驾驶量，交付可编辑 HTML。后续要求更新指定高德路书时，应沿用同一行程版本并验证写入。
