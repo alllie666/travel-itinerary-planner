@@ -12,7 +12,7 @@ It was distilled from planning a real 7-day Yunnan trip (Xishuangbanna → Jingm
 - **Compares hotels on live prices** for your exact dates and party size, checks hygiene scores and recent reviews for bug/noise complaints, measures reachability without a car, and groups options by area so you can choose.
 - **Writes concrete transport**: train numbers, bus departure times with backups, pickup points, prices, where to buy, and how to get a car where there is no ride-hailing.
 - **Gives every sight and every meal a backup** for crowds, rain or sold-out bookings.
-- **Renders a polished deliverable** (illustrated cover, route bar, per-day timelines, transport table, hotel cards, checklist) to PNG + PDF with a headless browser.
+- **Renders a polished deliverable** (illustrated cover, route bar, per-day timelines, transport table, hotel cards, checklist) with a headless browser: a set of **phone-sized page images** (one per day / section, easy to swipe or send in WeChat), plus a PDF and an optional single long image.
 
 ## Prerequisites
 
@@ -53,6 +53,7 @@ SKILL.md                         workflow the model follows
 references/research-playbook.md  site-specific tactics for Xiaohongshu, Ctrip, Fliggy, Amap, trains
 references/quality-checklist.md  pre-delivery checklist
 assets/itinerary-template.html   design template (a finished real trip; replace content, keep components)
+scripts/render-pages.ps1         HTML → one 2x PNG per page (Windows)
 scripts/render.ps1               HTML → 2x PNG + PDF (Windows)
 scripts/render.sh                HTML → 2x PNG + PDF (macOS / Linux)
 ```
@@ -65,7 +66,7 @@ scripts/render.sh                HTML → 2x PNG + PDF (macOS / Linux)
 - The skill never books, pays, logs in, or bypasses verification.
 - `scripts/render.ps1` is tested on Windows 10 + Edge. `scripts/render.sh` follows the same steps but has not been tested on macOS/Linux yet — issues and PRs welcome.
 
-## Authors
+## Authors & contributors
 
 - [@alllie666](https://github.com/alllie666)
 - [@BetteDavisEyes](https://github.com/BetteDavisEyes)

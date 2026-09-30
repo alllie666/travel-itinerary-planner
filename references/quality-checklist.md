@@ -26,7 +26,7 @@ Go through this before sending the files. Fix, or state clearly in the chat what
 - [ ] Platforms that couldn't be checked are named, with the reason
 
 ## Output
-- [ ] PNG rendered at 2× and inspected (no overflow, no clipped text)
+- [ ] Paged images rendered (one per day / section, each with title + page number) and a few inspected (no overflow, no clipped text)
 - [ ] PDF prints with backgrounds; long days break across pages cleanly
 - [ ] File names say what and which version; superseded files renamed `旧版_…`
 - [ ] Sources listed; unverified items labeled

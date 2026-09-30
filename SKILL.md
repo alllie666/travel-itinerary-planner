@@ -90,9 +90,14 @@ Use `assets/itinerary-template.html` as the design base. It is a finished real t
 - checklist with *when* to do each thing (ticket sale dates!)
 - sources footer
 
-Keep the `<script>` at the end that writes `body[data-h]`; the render script needs it to size the long image.
+Keep the `<script>` at the end: it writes `body[data-h]` (used to size screenshots) and, when the URL has `#page=N`, shows only the blocks marked `data-page="N"` with a small title + "N / total" header.
 
-Then run the render script: `powershell -File scripts/render.ps1 -Html trip.html -OutPrefix out/MyTrip` on Windows, or `scripts/render.sh trip.html out/MyTrip` on macOS/Linux. It measures page height, writes a 2× long PNG and a PDF. Look at the PNG (crop sections if it's very tall) before sending: check nothing overflows, backups are visible, and dates/weekdays match the calendar.
+**Deliver paged images by default.** A single 9,000-px image is hard to read on a phone; people swipe through photos much more easily. Tag every top-level block with `data-page`: page 1 = cover + route + legend + Q&A, then one page per day, then transport, hotels (split by base if long), checklist + sources. Render them with:
+
+- Windows: `& scripts/render-pages.ps1 -Html trip.html -OutDir out/pages -Names "01_封面与路线,02_10.5_…,…"` (call with `&` from PowerShell so Chinese file names survive), plus `scripts/render.ps1 -Html trip.html -OutPrefix out/MyTrip` for the full PDF (and an optional long image).
+- macOS/Linux: `scripts/render.sh trip.html out/MyTrip` (long PNG + PDF); for pages, loop over `#page=N` the same way.
+
+Look at a few pages before sending: nothing overflows, backups are visible, and dates/weekdays match the calendar. Send the pages in order with a caption telling the user they can multi-select them in WeChat.
 
 Name files by content and version, e.g. `云南7天行程长图_版纳-景迈山-普洱-昆明.png`; when superseding a file, rename the old one with a `旧版_` prefix rather than leaving two similar names.
 

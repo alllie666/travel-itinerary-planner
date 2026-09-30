@@ -140,12 +140,16 @@
   .carbox h4{margin:0 0 6px;color:var(--plum);font-size:15px}
   .carbox table{width:100%;border-collapse:collapse;margin-top:6px}
   .carbox td{padding:4px 6px;border-bottom:1px dashed #d6c8e0;font-size:13px}
+  .pghead{display:flex;justify-content:space-between;align-items:center;margin:0 -22px 4px;padding:14px 22px;background:var(--tea);color:#fff;font-size:14px}
+  .pghead .kai{font-size:18px;letter-spacing:1px}
+  body.paged{padding-bottom:18px}
+  body.paged .day,body.paged .card{margin-top:14px}
 </style>
 </head>
 <body>
 
 <!-- ======== 封面 ======== -->
-<div class="cover">
+<div data-page="1" class="cover">
   <svg viewBox="0 0 760 430" preserveAspectRatio="none" aria-hidden="true">
     <circle cx="600" cy="150" r="46" fill="#fff4d6" opacity=".9"/>
     <circle cx="600" cy="150" r="70" fill="#fff4d6" opacity=".25"/>
@@ -173,7 +177,7 @@
   </div>
 </div>
 
-<div class="route">
+<div data-page="1" class="route">
   <div class="line">
     <div class="st"><div class="dot">版</div><b>西双版纳</b><small>10.5–10.7<br>已订好住宿</small><span class="mode">🚐 金孔雀直达 4h</span></div>
     <div class="st"><div class="dot">景</div><b>景迈山</b><small>10.8–10.10 早<br>住 2 晚</small><span class="mode">🚐 金孔雀直达 3.5h</span></div>
@@ -184,12 +188,12 @@
 
 <div class="wrap">
 
-<div class="legend">
+<div data-page="1" class="legend">
   <span class="ic i-bus">🚐 班车</span><span class="ic i-car">🚗 打车/拼车</span><span class="ic i-train">🚄 高铁/地铁</span><span class="ic i-walk">🚶 步行</span><span class="ic i-sun">🌅 日出</span><span class="ic i-eat">🍜 吃</span><span class="ic i-tea">🍃 采茶</span>
   <span class="alt-demo">黄条 = 人多 / 下雨 / 订不上时的备选</span><span class="new">补充</span>= 版纳原攻略之外补的
 </div>
 
-<div class="card qa" style="margin-top:18px">
+<div data-page="1" class="card qa" style="margin-top:18px">
   <h3>❓ 10.7 当天能上景迈山吗？</h3>
   <p><span class="pill p-no">按原计划不行</span>金孔雀「景洪 → 景迈山」直达车<b>最后一班 14:30</b>；而 10.7 从野象谷回版纳的高铁是 <b>14:32</b> 或 <b>18:28</b>，曼掌村玩完赶不上。</p>
   <p><span class="pill p-yes">唯一办法</span>放弃曼掌村，10.7 下午 13:30 / 14:30 从告庄坐直达车，傍晚 18:00–19:00 到山上。</p>
@@ -197,10 +201,10 @@
 </div>
 
 <!-- ======== 每日 ======== -->
-<div class="sec"><span class="no">01</span><h2>每天怎么过</h2><span class="hint">按时间从上往下看</span></div>
+<div data-page="2" class="sec"><span class="no">01</span><h2>每天怎么过</h2><span class="hint">按时间从上往下看</span></div>
 
 <!-- 10.5 -->
-<div class="day">
+<div data-page="2" class="day">
   <div class="dhead bn"><div><div class="d">10.5</div><div class="w">周一</div></div><div class="t">曼听公园 · 告庄夜市<small>版纳第 1 天 · 只玩曼听 + 夜市，不奔波</small></div><span class="place">📍 景洪</span></div>
   <div class="tl">
     <div class="item"><div class="tm">15:00<br>17:30</div><div class="rail"></div><div><div class="ti">曼听公园 + 总佛寺</div><div class="ds">联票 40 元，下午光线柔和好拍照。总佛寺要遮住肩膀和膝盖，脱鞋入殿。</div><div class="alt"><b class="a">备选</b>下雨或人太多：只进总佛寺，然后回告庄逛街。</div></div></div>
@@ -213,7 +217,7 @@
 </div>
 
 <!-- 10.6 -->
-<div class="day">
+<div data-page="3" class="day">
   <div class="dhead bn"><div><div class="d">10.6</div><div class="w">周二</div></div><div class="t">基诺山巴朵幽谷 · 雨林溯溪<small>版纳第 2 天 · 蝙蝠侠 6–9 人小团，全程 4–5 小时</small></div><span class="place">📍 基诺山</span></div>
   <div class="tl">
     <div class="item"><div class="tm">早上</div><div class="rail"></div><div><div class="ti"><span class="ic i-car">🚗 小团接送</span> 酒店门口上车</div><div class="ds">速干长袖长裤，裤脚扎进袜子防蚂蟥；带换洗衣物、充电宝、驱蚊液、雨衣。<span class="new">补充</span>提前订团，把酒店名发给领队。</div></div></div>
@@ -225,7 +229,7 @@
 </div>
 
 <!-- 10.7 -->
-<div class="day">
+<div data-page="4" class="day">
   <div class="dhead bn"><div><div class="d">10.7</div><div class="w">周三</div></div><div class="t">曼掌村非遗手工 · 晚上菌子火锅<small>版纳第 3 天 · 按高铁时刻调整：中午去、傍晚回</small></div><span class="place">📍 曼掌村</span></div>
   <div class="tl">
     <div class="item"><div class="tm">上午</div><div class="rail"></div><div><div class="ti">告庄睡懒觉、休整</div><div class="ds">斑斓冰面包当早餐。</div></div></div>
@@ -240,7 +244,7 @@
 </div>
 
 <!-- 10.8 -->
-<div class="day">
+<div data-page="5" class="day">
   <div class="dhead jm"><div><div class="d">10.8</div><div class="w">周四</div></div><div class="t">金孔雀直达上山 · 芒景看古树<small>景迈第 1 天 · 车上约 4 小时，下午就在住处附近走走</small></div><span class="place">📍 芒景</span></div>
   <div class="tl">
     <div class="item hl"><div class="tm">08:25</div><div class="rail"></div><div><div class="ti"><span class="ic i-bus">🚐 金孔雀直达</span> 告庄西双景上车 → 景迈山 · 120 元/人</div><div class="ds">8 座商务车，约 4–4.5 小时。在「金孔雀票务」小程序买「景洪 → 景迈山」，上车点选<b>告庄西双景</b>，下车点选<b>芒景</b>（上车后告诉司机民宿名，会停在最近的路口）。司机发车前 30 分钟打电话。容易晕车的选前排、提前吃晕车药。</div><div class="alt"><b class="a">备选</b>这班满了：8:40 / 8:50 / 9:15 / 9:45（同价）。都没票：版纳客运站坐大巴到惠民（44 元）→ 惠民信用社路口坐景区公交上山（15 元，13:00 那班）。</div></div></div>
@@ -253,7 +257,7 @@
 </div>
 
 <!-- 10.9 -->
-<div class="day">
+<div data-page="6" class="day">
   <div class="dhead jm"><div><div class="d">10.9</div><div class="w">周五</div></div><div class="t">日出云海 · 采茶 · 糯干 + 翁基<small>景迈第 2 天 · 全程唯一一次日出</small></div><span class="place">📍 芒洪 · 糯干 · 翁基</span></div>
   <div class="tl">
     <div class="item"><div class="tm">06:15</div><div class="rail"></div><div><div class="ti"><span class="ic i-walk">🚶 步行 2.3 公里 · 32 分钟</span> 路过山 → 芒洪八角塔</div><div class="ds">天还黑，带手电 / 手机照明。不想走：前一晚请民宿约车（约 15 元/人）。</div></div></div>
@@ -271,7 +275,7 @@
 </div>
 
 <!-- 10.10 -->
-<div class="day">
+<div data-page="7" class="day">
   <div class="dhead pe"><div><div class="d">10.10</div><div class="w">周六</div></div><div class="t">金孔雀直达普洱 · 逛老城 · 夜车到昆明<small>一路往北，不走回头路</small></div><span class="place">📍 普洱思茅</span></div>
   <div class="tl">
     <div class="item"><div class="tm">07:30</div><div class="rail"></div><div><div class="ti">早饭 · 退房</div></div></div>
@@ -287,7 +291,7 @@
 </div>
 
 <!-- 10.11 -->
-<div class="day">
+<div data-page="8" class="day">
   <div class="dhead km"><div><div class="d">10.11</div><div class="w">周日</div></div><div class="t">睡到自然醒 · 去长水机场<small>飞机下午一点多</small></div><span class="place">📍 昆明</span></div>
   <div class="tl">
     <div class="item"><div class="tm">09:00</div><div class="rail"></div><div><div class="ti">早饭 · 退房</div></div></div>
@@ -298,8 +302,8 @@
 </div>
 
 <!-- ======== 交通 ======== -->
-<div class="sec"><span class="no">02</span><h2>交通一张表</h2><span class="hint">车次 / 班次 / 价格 / 在哪买</span></div>
-<div class="card">
+<div data-page="9" class="sec"><span class="no">02</span><h2>交通一张表</h2><span class="hint">车次 / 班次 / 价格 / 在哪买</span></div>
+<div data-page="9" class="card">
   <table class="tt">
     <tr><th>日期</th><th>班次</th><th>从 → 到</th><th>价格</th><th>在哪买 / 注意</th></tr>
     <tr><td>10.7</td><td class="t">C4220 12:10→12:21</td><td>西双版纳站 → 野象谷站</td><td>10 元</td><td>12306 / 携程；备选 C310 11:47</td></tr>
@@ -323,10 +327,10 @@
 </div>
 
 <!-- ======== 住宿 ======== -->
-<div class="sec"><span class="no">03</span><h2>住哪（你来挑）</h2><span class="hint">携程 9.29 实时价 · 2 成人 · 每晚</span></div>
-<p style="margin:0 0 6px;color:var(--muted);font-size:13px">版纳已订好，不再列。价格含“新客优惠”，你们俩账号看到的可能不同；品质相近就选最便宜的。</p>
+<div data-page="10" class="sec"><span class="no">03</span><h2>住哪（你来挑）</h2><span class="hint">携程 9.29 实时价 · 2 成人 · 每晚</span></div>
+<p data-page="10" style="margin:0 0 6px;color:var(--muted);font-size:13px">版纳已订好，不再列。价格含“新客优惠”，你们俩账号看到的可能不同；品质相近就选最便宜的。</p>
 
-<div class="card hgroup">
+<div data-page="10" class="card hgroup">
   <h3>🌿 景迈山 · 10.8 入住 · 2 晚</h3>
   <div class="gsub">住哪个寨子会影响每天怎么走：芒景 / 芒洪最方便（日出和采茶都能走过去）；住糯干吃饭便宜、好逛，但看日出要叫车。</div>
 
@@ -360,7 +364,7 @@
   </div>
 </div>
 
-<div class="card hgroup">
+<div data-page="11" class="card hgroup">
   <h3>🏙 昆明南站 · 10.10 入住 · 1 晚（推荐方案）</h3>
   <div class="gsub">21:32 到站；带“接送站”的最省事</div>
   <div class="hotels three">
@@ -373,7 +377,7 @@
   </div>
 </div>
 
-<div class="card hgroup">
+<div data-page="11" class="card hgroup">
   <h3>🍵 普洱 · 10.10 入住 · 1 晚（备选方案：第二天坐 D276）</h3>
   <div class="gsub">4.7 分以上、250 元以内；离普洱站打车约 20–25 分钟</div>
   <div class="hotels three">
@@ -387,8 +391,8 @@
 </div>
 
 <!-- ======== 待办 ======== -->
-<div class="sec"><span class="no">04</span><h2>出发前要办的事</h2></div>
-<div class="card">
+<div data-page="12" class="sec"><span class="no">04</span><h2>出发前要办的事</h2></div>
+<div data-page="12" class="card">
   <ul class="todo">
     <li><span class="box"></span><span class="when">现在</span><span>订景迈山 2 晚 + 昆明（或普洱）1 晚</span></li>
     <li><span class="box"></span><span class="when">现在</span><span>12306 / 携程买 10.7 <b>C4220</b> 去、<b>C311</b> 回</span></li>
@@ -399,16 +403,35 @@
   </ul>
 </div>
 
-<div class="duo" style="margin-top:14px">
+<div data-page="12" class="duo" style="margin-top:14px">
   <div class="mini"><h4>🌅 日出日落</h4>10 月初日出约 7:10、日落约 19:00；前一晚用天气 App 确认。</div>
   <div class="mini"><h4>🎒 全程必带</h4>防晒、驱蚊液、止痒膏、肠胃药、晕车药、晴雨伞、充电宝、少量现金、看日出的外套、手电。</div>
 </div>
 
-<div class="src">
+<div data-page="12" class="src">
 资料来源：你给的《AI 优化版云南西双版纳》；小红书：云南金孔雀交运集团澜沧运输分公司《景迈山班车进出时间刻表》、《全网独家！景迈山公共交通金孔雀选座攻略》、《景迈山的日与夜》、《景迈山｜终于搞明白了，五个寨子游玩攻略》、《去景迈山，一定要做的16件事》、《景迈山4个寨子，我只推荐2个》、《答应我！来景迈山一定要体验一下采茶制茶》、《景迈山采茶体验太棒了》、《毕业旅行第4站～普洱采茶体验攻略》、《普洱🍵一个巨大的成人兴趣班》；普洱文旅交通攻略；携程酒店 / 火车票实时查询（2026-09-29/30）；高德地图驾车 / 步行实测。店铺、班次、价格以出发时实际为准。
 </div>
 
 </div>
-<script>document.body.setAttribute('data-h', document.documentElement.scrollHeight);</script>
+<script>
+(function(){
+  var m = location.hash.match(/page=(\d+)/);
+  if (m) {
+    var n = m[1], total = 0;
+    document.querySelectorAll('[data-page]').forEach(function(e){
+      total = Math.max(total, +e.dataset.page);
+      if (e.dataset.page !== n) e.style.display = 'none';
+    });
+    if (n !== '1') {
+      var h = document.createElement('div');
+      h.className = 'pghead';
+      h.innerHTML = '<span class="kai">' + document.title + '</span><span>' + n + ' / ' + total + '</span>';
+      var w = document.querySelector('.wrap'); w.insertBefore(h, w.firstChild);
+    }
+    document.body.classList.add('paged');
+  }
+  document.body.setAttribute('data-h', document.documentElement.scrollHeight);
+})();
+</script>
 </body>
 </html>
